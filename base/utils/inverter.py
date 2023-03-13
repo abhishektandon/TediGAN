@@ -184,10 +184,9 @@ class StyleGANInverter(object):
       init_z = self.G.sample(1, latent_space_type='wp',
                              z_space_dim=512, num_layers=14)
 
-      save_image('./results/inversion/test/'+'test_image.png', init_z)
-      init_z = self.G.preprocess(init_z, latent_space_type='wp')
-
       
+      init_z = self.G.preprocess(init_z, latent_space_type='wp')
+      save_image('./results/inversion/test/'+'test_image.png', init_z)
 
       z = torch.Tensor(init_z).to(self.run_device)
       z.requires_grad = True
