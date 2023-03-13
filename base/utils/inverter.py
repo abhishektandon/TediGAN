@@ -187,13 +187,12 @@ class StyleGANInverter(object):
       init_z = self.G.preprocess(init_z, latent_space_type='wp')
       
       print(init_z.shape)
-
       z = torch.Tensor(init_z).to(self.run_device)
       z.requires_grad = True
       x = self.G._synthesize(init_z, latent_space_type='wp')['image']
       x = torch.Tensor(x).to(self.run_device)
       save_image('./results/inversion/test/'+'test_image.png', x)
-      
+
     else:
       x = image[np.newaxis]
       x = self.G.to_tensor(x.astype(np.float32))
