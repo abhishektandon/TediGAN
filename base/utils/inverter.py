@@ -251,4 +251,5 @@ class StyleGANInverter(object):
 
   def easy_invert(self, image, num_viz=0):
     """Wraps functions `preprocess()` and `invert()` together."""
+    cv2_imshow(image)
     return self.invert(self.preprocess(image), num_viz)
