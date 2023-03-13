@@ -3,9 +3,8 @@
 
 from tqdm import tqdm
 import cv2
-from google.colab.patches import cv2_imshow
 import numpy as np
-
+from utils.visualizer import save_image
 import torch
 import clip
 from models.stylegan_generator import StyleGANGenerator
@@ -252,5 +251,5 @@ class StyleGANInverter(object):
 
   def easy_invert(self, image, num_viz=0):
     """Wraps functions `preprocess()` and `invert()` together."""
-    cv2_imshow(image)
+    save_image('./results/inversion/test/'+'test_image.png')
     return self.invert(self.preprocess(image), num_viz)
